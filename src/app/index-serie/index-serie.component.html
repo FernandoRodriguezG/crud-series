@@ -1,0 +1,84 @@
+<div class="mt-4">
+
+    <div class="offset-md-1 col-md-10">
+      <div class="alert alert-primary" role="alert" *ngIf="alert">
+        {{textAlert}}
+      </div>
+        <div class="drac-boc drac-card drac-bg-purple drac-p-md">
+
+          <div class="row">
+
+            <div class="col-12 col-md-6 col-lg-6">
+
+              <mat-label class="h3">Series que ví o vere</mat-label>
+              <input (keyup)="applyFilter($event)" #input placeholder="Buscar" class="drac-input drac-input-white drac-text-white">
+          
+            </div>
+            
+            <div class="butt offset-xl-3 offset-md-3 mt-md-2  col-12  col-md-3 col-xl-3 d-flex justify-content-end">
+              <button class="drac-btn drac-bg-orange drac-mx-sm  my-sm-3 my-3 my-md-4 completo" (click)="agregarSerie()">
+                Nueva serie
+              </button>
+            </div>
+
+          </div>
+            
+          
+            <div class=" scroll">
+              <table mat-table [dataSource]="dataSource" matSort class="drac-table drac-bg-black-secondary">
+            
+                <!-- Progress Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="drac-text drac-text-white"> Serie </th>
+                  <td mat-cell *matCellDef="let row" class="drac-text drac-text-white"> {{row.nombre}} </td>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="plataforma">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="drac-text drac-text-white"> Plataforma </th>
+                  <td mat-cell *matCellDef="let row" class="drac-text drac-text-white"> {{row.plataforma}} </td>
+                </ng-container>
+            
+                <!-- Fruit Column -->
+                <ng-container matColumnDef="year">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="drac-text drac-text-white"> Año </th>
+                  <td mat-cell *matCellDef="let row" class="drac-text drac-text-white"> {{row.year}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="calificacion">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="drac-text drac-text-white"> Calificación </th>
+                  <td mat-cell *matCellDef="let row" class="drac-text drac-text-white"> {{row.calificacion}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="drac-text drac-text-white"> Acciones </th>
+                  <td mat-cell *matCellDef="let row" class="drac-text drac-text-white"> 
+                    <button class="drac-btn drac-bg-purple drac-btn-xs drac-text-cyan drac-mx-auto ml-1" (click)="openDialog('0ms', '0ms', row.id)"><i class="bi bi-trash3-fill"></i></button>
+                    <button (click)="editSerie(row.id)" class="drac-btn drac-bg-purple drac-btn-xs drac-text-cyan drac-mx-auto"><i class="bi bi-pencil-square"></i></button>
+                  
+                  
+                  </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow class="drac-text drac-text-white">
+                  <td class="mat-cell" colspan="4" class="drac-text drac-text-white">No data matching the filter "{{input.value}}"</td>
+                </tr>
+              </table>
+            
+              
+            </div>
+            <mat-paginator class="drac-bg-black-secondary drac-text drac-text-white" [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+

@@ -1,0 +1,20 @@
+<nav class="navbar navbar-dark navbar-expand-lg drac-bg-black">
+  <div class="container-fluid ">
+    <a class="navbar-brand drac-text-white" href="#">Diario de Series</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon drac-text-white"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class=" drac-tabs-white nav justify-content-center">
+        <li class="drac-tab" [routerLinkActive]="['drac-tab-active']" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="drac-tab-link drac-text" routerLink="/">Inicio</a>
+        </li>
+        <li class="drac-tab" [routerLinkActive]="['drac-tab-active']" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="drac-tab-link drac-text" routerLink="series">Series</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
